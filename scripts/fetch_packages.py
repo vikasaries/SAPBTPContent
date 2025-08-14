@@ -12,6 +12,28 @@ CPI_PASSWORD = os.getenv("CPI_PASSWORD")
 # Validate environment variables
 if not all([CPI_HOST, CPI_USER, CPI_PASSWORD]):
     raise EnvironmentError("Missing CPI credentials. Please set CPI_HOST, CPI_USER, and CPI_PASSWORD.")
+    
+# Authentication tuple
+AUTH = (CPI_USER, CPI_PASSWORD)
+
+# OAuth token endpoint (SAP BTP example)
+token_url = "https://haleon-cpi-dev-7ua1w2tv.authentication.eu20.hana.ondemand.com/oauth/token"
+
+# Request payload
+payload = {
+    "grant_type": "client_credentials"
+}
+
+# Basic Auth header
+response = requests.post(token_url, data=payload, auth=AUTH)
+
+if response.status_code == 200:
+    access_token = response.json().get("access_token")
+    print("Access Token:", access_token)
+else:
+    print(f"Failed to fetch token: {response.status_code}")
+    print(response.text)
+
 
 # Base URL for CPI API
 BASE_URL = f"https://{CPI_HOST}/api/v1"
@@ -22,7 +44,8 @@ AUTH = (CPI_USER, CPI_PASSWORD)
 # Custom headers
 headers = {
     "Accept": "application/json",
-    "User-Agent": "MyCPIClient/1.0"
+    "User-Agent": "MyCPIClient/1.0",
+    "Authorization": f"Bearer {access_token}"
 }
 
 
@@ -33,7 +56,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # Fetch all integration packages
 packages_url = f"{BASE_URL}/IntegrationPackages"
 print("Vikas1", packages_url)
-response = requests.get(packages_url, headers=headers, auth=AUTH)
+response = requests.get(packages_url, headers=headers)
 
 if response.status_code == 200:
     print("Success!")
