@@ -1,6 +1,8 @@
 import os
 import requests
 import json
+import logging
+
 
 # Load CPI credentials from environment variables
 CPI_HOST = os.getenv("CPI_HOST")
@@ -25,7 +27,9 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 packages_url = f"{BASE_URL}/IntegrationPackages?$top=2"
 
 response = requests.get(packages_url, auth=AUTH)
-print(response)
+
+print(f"Error fetching package metadata: {response}")
+
 response.raise_for_status()
 packages = response.json().get("d", {}).get("results", [])
 for package in packages:
