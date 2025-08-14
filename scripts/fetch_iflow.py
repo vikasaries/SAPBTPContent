@@ -37,9 +37,8 @@ else:
 
 # Base URL for CPI API
 BASE_URL = f"https://{CPI_HOST}/api/v1"
-print(f"Base Url" )
-# Authentication tuple
-AUTH = (CPI_USER, CPI_PASSWORD)
+print("BaseUrl", BASE_URL )
+
 
 # Custom headers
 headers = {
