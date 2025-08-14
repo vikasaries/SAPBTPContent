@@ -35,10 +35,12 @@ packages_url = f"{BASE_URL}/IntegrationPackages"
 print("Vikas1", packages_url)
 response = requests.get(packages_url, headers=headers, auth=AUTH)
 
-if response.status_code == 200:
+if: response.status_code == 200:
     print("Success!")
-else
+    print(response.text())  # or response.text for raw output
+else:
     print("StatusVikas",response.status_code)
+    print(response.text)
 response.raise_for_status()
 print("vikas1", response);
 print("vikas1", response.json());
