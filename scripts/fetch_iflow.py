@@ -57,6 +57,7 @@ artifact_url = f"{BASE_URL}/IntegrationDesigntimeArtifacts(Id=%27B060D_C68_SAP_E
 print(artifact_url)
 artifact_response = requests.get(artifact_url, headers=headers)
 artifact_response.raise_for_status()
+iflow_id = "IndanFile"
 artifact_file = os.path.join("Bank", f"{iflow_id}.zip")
 with open(artifact_file, "wb") as f:f.write(artifact_response.content)
 
