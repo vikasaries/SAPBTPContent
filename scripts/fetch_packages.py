@@ -19,6 +19,10 @@ print(f"Base Url" )
 # Authentication tuple
 AUTH = (CPI_USER, CPI_PASSWORD)
 
+headers = {
+        "Accept": "application/json"      # Specify response format
+    }
+
 # Output folder
 OUTPUT_DIR = "cpi_packages"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -26,7 +30,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # Fetch all integration packages
 packages_url = f"{BASE_URL}/IntegrationPackages"
 print("Vikas1", packages_url)
-response = requests.get(packages_url, auth=AUTH)
+response = requests.get(packages_url, headers=headers, auth=AUTH)
 
 response.raise_for_status()
 print("vikas1", response.json());
