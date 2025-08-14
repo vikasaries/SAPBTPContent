@@ -12,10 +12,10 @@ CPI_PASSWORD = os.getenv("CPI_PASSWORD")
 # Validate environment variables
 if not all([CPI_HOST, CPI_USER, CPI_PASSWORD]):
     raise EnvironmentError("Missing CPI credentials. Please set CPI_HOST, CPI_USER, and CPI_PASSWORD.")
-print(CPI_HOST + CPI_USER )
+
 # Base URL for CPI API
 BASE_URL = f"https://{CPI_HOST}/api/v1"
-
+print(f"{BASE_URL} )
 # Authentication tuple
 AUTH = (CPI_USER, CPI_PASSWORD)
 
