@@ -58,6 +58,7 @@ print(artifact_url)
 artifact_response = requests.get(artifact_url, headers=headers)
 artifact_response.raise_for_status()
 iflow_id = "IndanFile"
+os.makedirs("Bank", exist_ok=True)
 artifact_file = os.path.join("Bank", f"{iflow_id}.zip")
 with open(artifact_file, "wb") as f:f.write(artifact_response.content)
 
