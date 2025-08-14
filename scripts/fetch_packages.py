@@ -77,7 +77,7 @@ for package in packages:
 
     # Fetch iFlows in the package
     iflows_url = f"{BASE_URL}/IntegrationDesigntimeArtifacts?$filter=PackageId eq '{package_id}'"
-    iflow_response = requests.get(iflows_url, auth=AUTH)
+    iflow_response = requests.get(iflows_url, headers=headers)
     iflow_response.raise_for_status()
     iflows = iflow_response.json().get("d", {}).get("results", [])
 
@@ -89,7 +89,7 @@ for package in packages:
 
         # Download iFlow artifact
         artifact_url = f"{BASE_URL}/IntegrationDesigntimeArtifacts('{iflow_id}')/$value"
-        artifact_response = requests.get(artifact_url, auth=AUTH)
+        artifact_response = requests.get(artifact_url, headers=headers)
         artifact_response.raise_for_status()
         artifact_file = os.path.join(package_dir, f"{iflow_id}.zip")
         with open(artifact_file, "wb") as f:
