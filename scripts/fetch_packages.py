@@ -33,6 +33,7 @@ print("Vikas1", packages_url)
 response = requests.get(packages_url, headers=headers, auth=AUTH)
 
 response.raise_for_status()
+print("vikas1", response);
 print("vikas1", response.json());
 packages = response.json().get("d", {}).get("results", [])
 for package in packages:
