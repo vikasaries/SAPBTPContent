@@ -19,9 +19,12 @@ print(f"Base Url" )
 # Authentication tuple
 AUTH = (CPI_USER, CPI_PASSWORD)
 
+# Custom headers
 headers = {
-        "Accept": "application/json"      # Specify response format
-    }
+    "Accept": "application/json",
+    "User-Agent": "MyCPIClient/1.0"
+}
+
 
 # Output folder
 OUTPUT_DIR = "cpi_packages"
@@ -32,6 +35,10 @@ packages_url = f"{BASE_URL}/IntegrationPackages"
 print("Vikas1", packages_url)
 response = requests.get(packages_url, headers=headers, auth=AUTH)
 
+if response.status_code == 200:
+    print("Success!")
+else
+    print("StatusVikas",response.status_code)
 response.raise_for_status()
 print("vikas1", response);
 print("vikas1", response.json());
