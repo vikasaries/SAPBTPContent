@@ -54,18 +54,16 @@ OUTPUT_DIR = "cpi_packages"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Fetch all integration packages
-packages_url = f"{BASE_URL}/IntegrationPackages"
-print("Vikas1", packages_url)
+packages_url = f"{BASE_URL}/IntegrationPackages?$top=1"
+
 response = requests.get(packages_url, headers=headers)
 
 if response.status_code == 200:
     print("Success!")
-    print(response.text)  # or response.text for raw output
 else:
     print("StatusVikas",response.status_code)
     print(response.text)
 response.raise_for_status()
-print("vikas1", response);
 print("vikas1", response.json());
 packages = response.json().get("d", {}).get("results", [])
 for package in packages:
