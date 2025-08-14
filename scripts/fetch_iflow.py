@@ -57,6 +57,11 @@ print("vikas",BASE_URL)
 # Download iFlow artifact
 artifact_url = f"{BASE_URL}/IntegrationDesigntimeArtifacts(Id=%27B060D_C68_SAP_ECC_To_BNP_Bank_-_Replicate_BNP_Bank_Payment_Files_copy%27,Version=%27active%27)/$value"
 print(artifact_url)
+headers = {
+    "Accept": "application/json",
+    "User-Agent": "MyCPIClient/1.0",
+    "Authorization": f"Bearer {access_token}"
+}
 artifact_response = requests.get(artifact_url, headers=headers)
 artifact_response.raise_for_status()
 iflow_id = "IndanFile"
