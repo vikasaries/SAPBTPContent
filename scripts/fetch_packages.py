@@ -2,6 +2,7 @@ import os
 import requests
 import json
 
+environment = Dev
 # Load CPI credentials from environment variables
 CPI_HOST = os.getenv("CPI_HOST")
 CPI_USER = os.getenv("CPI_USER")
