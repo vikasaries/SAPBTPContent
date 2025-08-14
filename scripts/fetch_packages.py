@@ -37,7 +37,7 @@ response = requests.get(packages_url, headers=headers, auth=AUTH)
 
 if response.status_code == 200:
     print("Success!")
-    print(response.text())  # or response.text for raw output
+    print(response.text)  # or response.text for raw output
 else:
     print("StatusVikas",response.status_code)
     print(response.text)
