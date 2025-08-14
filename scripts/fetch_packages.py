@@ -28,8 +28,8 @@ packages_url = f"{BASE_URL}/IntegrationPackages"
 print("Vikas1", packages_url)
 response = requests.get(packages_url, auth=AUTH)
 
-print("Viaks2",response.raise_for_status())
 response.raise_for_status()
+print("vikas1", response.json());
 packages = response.json().get("d", {}).get("results", [])
 for package in packages:
     package_id = package["Id"]
