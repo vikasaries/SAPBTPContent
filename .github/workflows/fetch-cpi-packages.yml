@@ -31,7 +31,7 @@ jobs:
           CPI_HOST: ${{ secrets.CPI_HOST }}
           CPI_USER: ${{ secrets.CPI_USER }}
           CPI_PASSWORD: ${{ secrets.CPI_PASSWORD }}
-        run: python scripts/fetch_packages.py
+        run: python scripts/fetch_iflow.py
 
       - name: Commit fetched packages
         run: |
