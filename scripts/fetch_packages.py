@@ -25,10 +25,10 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Fetch all integration packages
 packages_url = f"{BASE_URL}/IntegrationPackages"
-
+print("Vikas1", packages_url)
 response = requests.get(packages_url, auth=AUTH)
 
-print(f"Error fetching package metadata: {response}")
+print("Vikas", response)
 
 response.raise_for_status()
 packages = response.json().get("d", {}).get("results", [])
