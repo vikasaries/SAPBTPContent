@@ -67,7 +67,7 @@ artifact_response.raise_for_status()
 iflow_id = "IndanFile"
 
 artifact_file = os.path.join(package_dir, f"{iflow_id}.zip")
-with open(artifact_file, "w") as f:
+with open(artifact_file, "wb") as f:
     f.write(artifact_response.content)
 
 print(f"Fetched and their iFlows into '{OUTPUT_DIR}' folder.")
