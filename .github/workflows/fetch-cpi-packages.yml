@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Target environment (dev/test/prod)'
+        description: 'Target environment (Dev/test/prod)'
         required: true
-        default: 'dev'
+        default: 'Dev'
 
 jobs:
   fetch-packages:
