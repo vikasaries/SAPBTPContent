@@ -1,0 +1,35 @@
+name: Fetch CPI Packages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch-packages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run fetch script
+        env:
+          CPI_HOST: ${{ secrets.CPI_HOST }}
+          CPI_USER: ${{ secrets.CPI_USER }}
+          CPI_PASSWORD: ${{ secrets.CPI_PASSWORD }}
+        run: python scripts/fetch_packages.py
+
+      - name: Commit fetched packages
+        run: |
+          git config --global user.name "vikas-8-agarwal_corpnet4"
+          git config --global user.email "vikas.8.agarwal@haleon.com"
+          git add cpi_packages/
+          git commit -m "Fetched CPI packages"
+          git push
