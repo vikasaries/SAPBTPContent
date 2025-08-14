@@ -27,9 +27,8 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 packages_url = f"{BASE_URL}/IntegrationPackages"
 print("Vikas1", packages_url)
 response = requests.get(packages_url, auth=AUTH)
-data = json.loads(response.text)
-print("Vikas", data)
 
+print("Viaks2",response.raise_for_status())
 response.raise_for_status()
 packages = response.json().get("d", {}).get("results", [])
 for package in packages:
