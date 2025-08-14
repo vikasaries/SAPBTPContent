@@ -15,7 +15,7 @@ if not all([CPI_HOST, CPI_USER, CPI_PASSWORD]):
 
 # Base URL for CPI API
 BASE_URL = f"https://{CPI_HOST}/api/v1"
-print(f"{BASE_URL} )
+print(f"Base Url" )
 # Authentication tuple
 AUTH = (CPI_USER, CPI_PASSWORD)
 
