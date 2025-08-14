@@ -35,8 +35,8 @@ jobs:
 
       - name: Commit fetched packages
         run: |
-          git config --global user.name "vikas-8-agarwal_corpnet4"
-          git config --global user.email "vikas.8.agarwal@haleon.com"
+          git config --global user.name "vikasaries"
+          git config --global user.email "vikasaries@gmail.com"
           git add cpi_packages/
           git commit -m "Fetched CPI packages"
           git push
