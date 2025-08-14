@@ -24,7 +24,7 @@ OUTPUT_DIR = "cpi_packages"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Fetch all integration packages
-packages_url = f"{BASE_URL}/IntegrationPackages?$top=2"
+packages_url = f"{BASE_URL}/IntegrationPackages"
 
 response = requests.get(packages_url, auth=AUTH)
 
