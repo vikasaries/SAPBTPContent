@@ -22,12 +22,12 @@ OUTPUT_DIR = "cpi_packages"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Fetch all integration packages
-packages_url = f"{BASE_URL}/IntegrationPackages(%27APOInterfaces%27)"
+packages_url = f"{BASE_URL}/IntegrationPackages?$top=2"
 
 response = requests.get(packages_url, auth=AUTH)
 print(response)
 response.raise_for_status()
-packages = response.json().get("d", {})
+packages = response.json().get("d", {}).get("results", [])
 for package in packages:
     package_id = package["Id"]
     package_dir = os.path.join(OUTPUT_DIR, package_id)
