@@ -52,7 +52,7 @@ headers = {
 OUTPUT_DIR = "cpi_packages"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 package_dir = "bank"
-os.makedirs(package_dir, exist_ok=True)
+
 print("vikas",BASE_URL)
 # Download iFlow artifact
 artifact_url = f"{BASE_URL}/IntegrationDesigntimeArtifacts(Id=%27B060D_C68_SAP_ECC_To_BNP_Bank_-_Replicate_BNP_Bank_Payment_Files_copy%27,Version=%27active%27)/$value"
@@ -66,7 +66,7 @@ artifact_response = requests.get(artifact_url, headers=headers)
 artifact_response.raise_for_status()
 iflow_id = "IndanFile"
 
-artifact_file = os.path.join(package_dir, f"{iflow_id}.zip")
+artifact_file = os.path.join(OUTPUT_DIR, f"{iflow_id}.zip")
 with open(artifact_file, "wb") as f:
     f.write(artifact_response.content)
 
