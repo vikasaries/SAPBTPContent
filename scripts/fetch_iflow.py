@@ -64,7 +64,7 @@ headers = {
 }
 artifact_response = requests.get(artifact_url, headers=headers)
 artifact_response.raise_for_status()
-iflow_id = "IndanFile"
+iflow_id = "B060D_C68_SAP_ECC_To_BNP_Bank"
 
 artifact_file = os.path.join(OUTPUT_DIR, f"{iflow_id}.zip")
 with open(artifact_file, "wb") as f:
